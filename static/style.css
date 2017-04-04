@@ -38,3 +38,24 @@ tr {
 tr:first-child {
   border-top: 1px solid black;
 }
+
+a {
+  margin-left: 15px;
+  display: inline-block;
+  width: 90px;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  padding: 3px 0;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.24);
+}
+
+a:hover {
+  opacity: 0.5;
+}
+
+.breadcrumb {
+  width: 150px;
+}

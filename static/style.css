@@ -59,3 +59,27 @@ a:hover {
 .breadcrumb {
   width: 150px;
 }
+
+.messages {
+  border: 0;
+  top: 0;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: rgba(228, 163, 148, 0.70);
+  opacity: 0.7;
+  width: 100%;
+  line-height: 0.5;
+}
+
+.messages li {
+  color: rgba(195, 66, 63, 0.83);
+  display: block;
+  font-size: 1.1em;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+  text-align: center;
+  border-bottom: none;
+}

@@ -27,7 +27,7 @@
           </td>
           <td>{{ event.description }}</td>
           <td>
-            <a href="{{ url_for('mod_events.index') }}" class="right"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="{{ url_for('mod_events.edit', id=event.id) }}" class="right"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <a href="{{ url_for('mod_events.delete', id=event.id) }}" class="right"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
           </td>
         </tr>

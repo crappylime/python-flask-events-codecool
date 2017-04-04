@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Add event | {{ super() }}{% endblock %}
+
+{% block content %}
+    <h1>Add event</h1>
+    <form action="" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" maxlength="30" autofocus
+        {% if event %}
+            value="{{ event.name }}"
+        {% else %}
+            value="" placeholder="What is the name of your event?"
+        {% endif %}>
+
+        <label for="date">Select date</label>
+        <input type="date" name="date" id="date" maxlength="10"
+        {% if event %}
+            value="{{ event.date or ''}}"
+        {% else %}
+            value="" placeholder="dd-mm-YYYY"
+        {% endif %}>
+
+        <input type="text" name="description" id="description" maxlength="50"
+        {% if event %}
+            value="{{ event.description }}"
+        {% else %}
+            value="" placeholder="What is the description?"
+        {% endif %}>
+        <input class="button" type="submit" name="" value="Save">
+    </form>
+    <div class="text-center">
+        <a href="{{ url_for('mod_events.index') }}">Home ></a>
+    </div>
+{% endblock %}

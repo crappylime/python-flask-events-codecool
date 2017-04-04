@@ -34,8 +34,8 @@
           {% endfor %}
       </tbody>
     </table>
-    <a href="{{ url_for('mod_events.index') }}">Add new event ></a>
+    <a href="{{ url_for('mod_events.create') }}">Add new event ></a>
     {% else %}
-    <em>No events. <a href="{{ url_for('mod_events.index') }}">Add new</a></em>
+    <em>No events. <a href="{{ url_for('mod_events.create') }}">Add new</a></em>
     {% endif %}
 {% endblock %}

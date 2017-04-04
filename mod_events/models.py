@@ -24,6 +24,20 @@ class Event:
             events_list.append(cls(row[1], row[2], row[3], row[0]))
         return events_list
 
+    @classmethod
+    def get_by_id(cls, id):
+        """ Retrieves event with given id from database.
+        Args:
+            id(int): event id
+        Returns:
+            Event: Event object with a given id
+        """
+        query = "SELECT * FROM `events` WHERE `id` = ?;"
+        rows = Database.execute_query(query, (id,))
+        row = rows[0]
+        if row:
+            return cls(row[1], row[2], row[3], row[0])
+
     def save(self):
         """ Saves/updates event in database """
         if self.id:
@@ -32,3 +46,8 @@ class Event:
         else:
             query = 'INSERT INTO events (`name`, `date`, `description`) VALUES (?, ?, ?);'
             Database.execute_query(query, (self.name, self.date, self.description))
+
+    def delete(self):
+        """ Removes event from the database """
+        query = "DELETE FROM events WHERE id = ?;"
+        Database.execute_query(query, (self.id,))

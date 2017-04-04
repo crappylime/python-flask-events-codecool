@@ -1,0 +1,9 @@
+body {
+  font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+}
+
+.content {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 56%;
+}

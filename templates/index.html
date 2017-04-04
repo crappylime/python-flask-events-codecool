@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}Your Events | {{ super() }}{% endblock %}
+
+{% block content %}
+    <h1>Your Events</h1>
+    {% if events_list %}
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in events_list %}
+        <tr>
+          <td>{{ event.id }}.</td>
+          <td>{{ event.name }}</td>
+          <td>
+            {% if event.date %}
+                {{ event.date }}
+            {% endif %}
+          </td>
+          <td>{{ event.description }}</td>
+          <td>
+            <a href="{{ url_for('mod_events.index') }}" class="right"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="{{ url_for('mod_events.index') }}" class="right"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{ url_for('mod_events.index') }}">Add new event ></a>
+    {% else %}
+    <em>No events. <a href="{{ url_for('mod_events.index') }}">Add new</a></em>
+    {% endif %}
+{% endblock %}

@@ -7,3 +7,34 @@ body {
   margin-top: 50px;
   width: 56%;
 }
+
+form, table {
+  margin-bottom: 5%;
+}
+
+input {
+  display: block;
+  margin-top: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: rgba(0, 0, 0, 0.24);
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+tr:first-child {
+  border-top: 1px solid black;
+}

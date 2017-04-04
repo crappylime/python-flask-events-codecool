@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Add event</h1>
-    <form action="" method="POST">
+    <form action="{{ url_for('mod_events.create') }}" method="POST">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" maxlength="30" autofocus
         {% if event %}

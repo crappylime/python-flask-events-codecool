@@ -31,3 +31,11 @@ def create():
             return redirect(url_for('mod_events.index'))
 
     return render_template('form.html')
+
+
+@mod_events.route("/events/<int:id>/delete")
+def delete(id):
+    """ Removes event with selected id from the database """
+    event = Event.get_by_id(id)
+    event.delete()
+    return redirect(url_for('mod_events.index'))

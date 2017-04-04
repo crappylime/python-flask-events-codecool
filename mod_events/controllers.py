@@ -34,9 +34,35 @@ def create():
         return redirect(url_for('mod_events.index'))
     return redirect(url_for('mod_events.new'))
 
+
 @mod_events.route("/<int:id>/delete")
 def delete(id):
     """ Removes event with selected id from the database """
     event = Event.get_by_id(id)
     event.delete()
     return redirect(url_for('mod_events.index'))
+
+
+@mod_events.route("/<int:id>/edit", methods=['GET', 'POST'])
+def edit(id):
+    """ Edits event with selected id in the database
+    If the method was GET it should show event form.
+    If the method was POST it should update event in database.
+    """
+    event = Event.get_by_id(id)
+
+    if request.method == 'POST':
+        if not request.form['name']:
+            flash("Event's name is required")
+        elif not request.form['date']:
+            flash("Event's date is required")
+        elif not request.form['description']:
+            flash("Event's description is required")
+        else:
+            event.name = request.form['name']
+            event.date = request.form['date']
+            event.description = request.form['description']
+            event.save()
+            return redirect(url_for('mod_events.index'))
+
+    return render_template('form.html', event=event)

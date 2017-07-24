@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.register_blueprint(mod_events)
 app.secret_key = os.urandom(24)
 
-Database.create_db('/home/lama/Code/Python/python-flask-events-codecool/database.sql')
+Database.create_db('/app/database.sql')
 
 
 @app.route("/")

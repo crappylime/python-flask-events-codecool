@@ -17,7 +17,7 @@ class Event:
             list(Event): list of all events
         """
         events_list = []
-        query = "SELECT * FROM `events` ORDER BY date DESC;"
+        query = "SELECT * FROM events ORDER BY date DESC;"
         data = Database.execute_query(query, ())
 
         for row in data:
@@ -32,7 +32,7 @@ class Event:
         Returns:
             Event: Event object with a given id
         """
-        query = "SELECT * FROM `events` WHERE `id` = ?;"
+        query = "SELECT * FROM events WHERE id = %s;"
         rows = Database.execute_query(query, (id,))
         row = rows[0]
         if row:
@@ -41,13 +41,13 @@ class Event:
     def save(self):
         """ Saves/updates event in database """
         if self.id:
-            query = "UPDATE `events` SET `name` = ?, `date` = ?, `description` = ? WHERE `id` = ?;"
+            query = "UPDATE events SET name = %s, date = %s, description = %s WHERE id = %s RETURNING name, date, description;"
             Database.execute_query(query, (self.name, self.date, self.description, self.id))
         else:
-            query = 'INSERT INTO events (`name`, `date`, `description`) VALUES (?, ?, ?);'
+            query = 'INSERT INTO events (name, date, description) VALUES (%s, %s, %s) RETURNING name, date, description;'
             Database.execute_query(query, (self.name, self.date, self.description))
 
     def delete(self):
         """ Removes event from the database """
-        query = "DELETE FROM events WHERE id = ?;"
+        query = "DELETE FROM events WHERE id = %s RETURNING id;"
         Database.execute_query(query, (self.id,))

@@ -1,7 +1,9 @@
-from flask import Flask
-from mod_events.controllers import mod_events
-from database import Database
 import os
+
+from flask import Flask, redirect, url_for
+
+from database import Database
+from mod_events.controllers import mod_events
 
 app = Flask(__name__)
 app.register_blueprint(mod_events)

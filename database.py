@@ -1,4 +1,4 @@
-import sqlite3
+import psycopg2
 
 
 class Database:
@@ -11,7 +11,7 @@ class Database:
         with open(filename, 'r') as f:
             sqlfile = f.read()
 
-        conn = sqlite3.connect('events.db')
+        conn = psycopg2.connect("dbname='test'")
         with conn:
             cur = conn.cursor()
             cur.execute(sqlfile)
@@ -19,7 +19,7 @@ class Database:
     @classmethod
     def execute_query(cls, query, args):
         """Execute query and return data"""
-        conn = sqlite3.connect('events.db')
+        conn = psycopg2.connect("dbname='test'")
         cur = conn.cursor()
         cur.execute(query, args)
         data = cur.fetchall()
